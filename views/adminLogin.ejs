@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/adminLogin.css">
+    <title>Admin | Panel</title>
+</head>
+<body>
+    <div class="container">
+        <form action="/api/auth/loginAdmin" method="post">
+        <div class="form">
+            <span>Admin login</span>
+            <%if(message){%>
+                <p><%= message%></p>
+            <%}%>
+               <input type="text" class="type-inp"name="email" placeholder="Email" id="login" required>
+               <input type="password"class="type-inp" name="password"  placeholder="Password" id="password" required>
+               <input type="submit" class="btn-inp" value="Tasdiqlash ✅" id="submit" required>
+            </div>
+        </div>
+        </form>
+</body>
+</html>

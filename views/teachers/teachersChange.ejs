@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            display: flex;
+        }
+        .news{
+            border: 1px solid #000;
+        }
+        .news img {
+            height: 300px;
+            width: 300px;
+        }
+        .none{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="leftBar">
+        <h2>Create a new Teacher</h2>
+    <form action="" method="post" enctype="multipart/form-data">
+        <label for="image">Ehtiyot bo'ling. Bu yerga .png yoki .jpg kengaytmali faylni yuklang. Aksholda saytda bug kelib chiqishi turgan gap<input type="file" placeholder="enter new image" name="image"></label><br>
+        <textarea type="text" name="title" id="" required>Ism Familaya</textarea><br>
+        <textarea type="text" name="work" id="" required>Fizika o'qituvchisi</textarea><br>
+        <textarea type="text" name="desc" required>Descriptioni</textarea><br>
+        <textarea type="text" name="email" required>Email</textarea><br>
+        <textarea type="text" name="telegram" required>telegram</textarea><br>
+        <textarea type="text" name="instagram" required>instagram</textarea><br>
+        <textarea type="text" name="phone" required>phone</textarea><br>
+        <input type="submit" value="Change">
+    </form>
+    </div>
+    <div class="rightBar">
+        <%if(teachers){ teachers.forEach(elem=>{%>
+        <div class="news">
+            <img src="../img/team/<%=elem.image%>">
+            <h1><%=elem.title%></h1>
+            <p>
+                <%=elem.desc%> <br>
+                <%=elem.telegram%> <br>
+                <%=elem.instagram%> <br>
+                <%=elem.phone%> <br>
+                <%=elem.email%> <br>
+                
+                <form action="/teachers/<%=adminID%>/delete/<%=elem._id%>" method="post" >
+                <input type="submit" value="delete"></form>
+                <form action="/teachers/<%=adminID%>/update/<%=elem._id%>" method="post" class="none" id="<%=elem._id%>">
+                   
+                    <textarea type="text" name="title" id="title" value="" placeholder="Ism Familiya"><%=elem.title%></textarea><br>
+                    <textarea type="text" name="work" id="work" value="" placeholder="Nima ish qiladi"><%=elem.work%></textarea><br>
+                    <textarea type="text" name="desc" id="desc" value="" placeholder="Comment"><%=elem.desc%></textarea><br>
+                    <textarea type="text" name="email" id="email" value="" placeholder="email manzili"><%=elem.email%></textarea><br>
+                    <textarea type="text" name="telegram" id="telegram" value="" placeholder="telegram manzili"><%=elem.telegram%></textarea><br>
+                    <textarea type="text" name="instagram" id="instagram" value="" placeholder="instagram manzili"><%=elem.instagram%></textarea><br>
+                    <textarea type="text" name="phone" id="phone" value="" placeholder="telefon raqami +998911234567"><%=elem.phone%></textarea><br>
+                    <input type="submit" value="change">
+
+
+                </form>
+                <button class="edit">Edit</button>
+                <script>
+                    document.querySelectorAll('.news').forEach(elem=>{
+                        elem.addEventListener('click', e=>{
+                            e.target.className =='edit'
+                            elem.querySelector('.none').classList.toggle('none')
+                        })
+                    })
+                </script>
+            </p>
+        </div>
+        <%})}%>
+    </div>
+    <form action="/productionData/teacherContent"></form>
+    <button id="result">Result</button>
+    <iframe src="<%=hosting%>/teachers" frameborder="0" id="teachersPageIf"></iframe>
+    <style>
+        #teachersPageIf{
+            position: fixed;
+            bottom: 0;
+            left: 200px; 
+            width: 100vw;
+            height: 100vh;
+            transform: scale(.5);
+            transform-origin: bottom left;
+        }
+        #result{
+            position: absolute;
+            bottom: 0;
+            left: 0;
+        }
+        .none{
+            display: none;
+        }
+    </style>
+    <script>
+        document.querySelector("#result").addEventListener('click', ()=>{
+            document.querySelector('#teachersPageIf').classList.toggle("none")
+        })
+
+        document.querySelector("#title").addEventListener("click", ()=>{
+            document.querySelector('.namemain1 span').style.color = 'red'
+        })
+        // console.log(document.querySelector('iframe').contentWindow.document );
+    </script>
+    <!-- <script>
+        document.querySelector(".delete").restintag(optionsObj, function(data) {
+        console.log(data);
+    },
+    function(error) {
+        console.log(error); 
+    });
+    </script> -->
+</body>
+</html>

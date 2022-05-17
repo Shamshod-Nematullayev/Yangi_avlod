@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins";
+}
+h1{
+    font-size: 50px;
+    margin: 20px 0;
+    text-align: center;
+}
+textarea{
+    padding: 5px;
+}
+button{
+    width: 50%;
+    height: 50px;    
+    background-color: #1c4eac;
+    border: none;
+    transition: all .4s ease;
+}
+body .back{
+    background-color: red;
+}
+button a{
+    color: white;
+    font-size: 22px;
+    letter-spacing: 1px;
+    text-decoration: none;
+}
+button:active{
+    transform: scale(0.99);
+}
+button:hover{
+    cursor: pointer;
+    background-color: #0b2d6b;
+}
+.none{
+    display: none;
+}
+    </style>
+    <title>Admin Panel | rename_1</title>
+</head>
+<body>
+    <form action="/productionData/<%=adminID%>/rename_1" method="post">
+        <%if(message){%>
+            <p class="alert none"><%= message%></p>
+        <%}%>
+        <script>alert(document.querySelector("p.alert").innerHTML)</script>
+        <img src="/image/rename_1.jpg" alt="rasm"><br>
+        <textarea cols="30" rows="5" name="Openingdesc"><%=data.Openingdesc%></textarea><br>
+        <label for="">Bosh sahifa foni uchun rasm linki</label><input type="text" name="backgroundImage" placeholder="Bosh sahifa foni uchun rasm linki" value="<%=data.backgroundImage%>" onfocus="(this.value = '' )">
+        <br>
+        <button type="submit">
+            <a>O`zgartirish 📝</a>
+        </button>    
+    </form>
+    <br>
+    <br>
+
+    <button class="back">
+        <a href="/prodData/<%=adminID%>">Orqaga 🔙</a>
+    </button>
+</body>
+</html>
