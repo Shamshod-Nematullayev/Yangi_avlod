@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins";
+}
+h1{
+    font-size: 50px;
+    margin: 20px 0;
+    text-align: center;
+}
+textarea{
+    padding: 5px;
+}
+button{
+    width: 50%;
+    height: 50px;    
+    background-color: #1c4eac;
+    border: none;
+    transition: all .4s ease;
+}
+body .back{
+    background-color: red;
+}
+button a{
+    color: white;
+    font-size: 22px;
+    letter-spacing: 1px;
+    text-decoration: none;
+}
+button:active{
+    transform: scale(0.99);
+}
+button:hover{
+    cursor: pointer;
+    background-color: #0b2d6b;
+}
+input{
+    width: 300px;
+    height: 40px;
+    padding-left: 20px;
+    font-size: 20px;
+    margin: 20px 0;
+}
+.box{
+    padding-left: 90px;
+    width: 100%;
+    margin: 40px 0 ;
+    /* border: 1px solid red; */
+}
+p{
+    font-size: 40px;
+    color: white;
+    margin: 20px;
+    width: 100%;
+    height: 60px;
+    padding-left: 20px;
+    background-color: black;
+}
+    </style>
+    <title>Admin Panel | Rename_3</title>
+</head>
+<body>
+    <h1>Admin Panel | rename_3</h1>
+
+<form action="/productionData/<%=adminID%>/rename_3" method="post">
+    <div class="box">
+        <p>
+            <%=message%>
+        </p>
+        <img src="/image/rename_3/1.jpg" alt="rasm"><br>
+        <input type="text" name="imgForData" value="<%=data.imgForData%>">
+        <br>
+    </div>
+
+
+    <div class="box">
+        <img src="/image/rename_3/2.jpg" alt="rasm"><br>
+        <textarea cols="30" rows="10" name="descForData"><%=data.descForData%></textarea>
+        <br>
+        <button type="submit">
+            O`zgartirish 📝
+        </button>
+    </div>
+</form>
+    <button class="back">
+        <a href="/prodData/<%=adminID%>">Orqaga 🔙</a>
+    </button>
+</body>
+</html>

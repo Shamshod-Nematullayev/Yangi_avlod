@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Font poppins -->    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <!-- Font poppins -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Font poppins -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Slick Theme Min -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css" integrity="sha512-17EgCFERpgZKcm0j0fEq1YCJuyAWdz9KUtv1EjVuaOz8pDnh/0nZxmU6BBXwaaxqoi9PQXnRWqlcDB027hgv9A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Slick min css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css" integrity="sha512-yHknP1/AwR+yx26cB1y0cjvQUMvEa2PFzt1c9LlS4pRQ5NOTZFWbhBig+X9G9eYW/8m0/4OXNx8pxJ6z57x0dw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- AOS LINK -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <!-- Link Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- style css -->
+    <link rel="stylesheet" href="/teacher/style.css">
+    <!-- Title Site -->
+    <title>Yangi Avlod | O'qituvchilar</title>
+  </head>
+  <body>
+  
+
+  <a id="button">
+    <i class="fas fa-angle-up"></i>
+  </a>
+
+    <div id="preloader"><div id="loader"></div></div>
+    <div class="container">
+      <header id="header">
+        <%if(userId){%>
+            <span id="clock">12 : 12 : 12</span>
+            <%}else{%>
+                <a href="/login" id="loginBtn">Kirish</a>
+        <%}
+        %>
+        <ul id="menu">
+            <li><a href="/">Bosh Sahifa</a></li>
+            <li><a href="/teachers" class="active">O'qituvchilar</a></li>
+            <li><a href="/news">Yangliklar</a></li>
+            <li><a href="/courses">Kurslar</a></li>
+            <li><a onclick="bizBilanBoglanish()" style="cursor: pointer;">Biz bilan bog'laning</a></li>
+            <script> 
+                function bizBilanBoglanish(){
+                    window.scrollTo(0, document.body.scrollHeight - document.querySelector('footer').scrollHeight- document.querySelector(".map-cont").scrollHeight-90)
+                }
+            </script>
+        </ul>
+        <p class="logo">Yangi Avlod</p>
+        <i class="fa-solid fa-bars" id="bars"></i>
+    </header>
+    </div>
+    <!-- <div class="main">
+        <div class="mainly-text">
+            <div class="namemain1" >
+                <span data-aos="fade-right"  
+                data-aos-duration="1000" 
+                data-aos-offset="200" 
+                data-aos-delay="50" >O'QITUVCHILAR</span>
+            </div>
+            <div class="namemain2">
+                <p data-aos="fade-right"  
+                data-aos-duration="1000" 
+                data-aos-offset="200" 
+                data-aos-delay="150" >O'qituvchilar Bizning faxrimiz Bular Bor ekan . Bolalarimiz Bilimdon Bulur.</p>
+            </div>
+            <div class="namemain3">
+              <a href="../Biz-bilan-boglaning/index.html">
+                <input data-aos="fade-right"  
+                data-aos-duration="2000" 
+                data-aos-offset="200" 
+                data-aos-delay="300"  id="main-btn" type="submit" value="Biz bilan bog'laning" >
+              </a>
+            </div>    
+        </div>
+    </div> -->
+
+
+
+
+
+
+
+    <div class="slider-cont-name2">
+        <span>Bizning O'qituvchilarimiz</span>
+        <p>Yangi Avlod O`quv Markazi O'qituvcjilari</p>
+    </div>
+
+    <div class="container1">
+        <div class="card-content" style="display: none">
+          <div class="card-cont">
+            <%teachersData.forEach(elem=>{ %>
+              <div class="card">
+                <div class="card-image">
+                    <img src="/img/team/<%=elem.image%>" alt="">
+                    <div class="img-hover">
+                        <p><%=elem.title%></p>
+                        <span><%=elem.work%></span>
+                    </div>
+                </div>
+                
+                <div class="card-info">
+                    <h3><%=elem.title%></h3>
+                    <p><%=elem.desc%></p>
+                    <div class="link-icon">
+                      <a href="<%=elem.telegram%>"><i class="fa-brands fa-telegram"></i></a>
+                      <a href="<%=elem.instagram%>"><i class="fa-brands fa-instagram"></i></a>
+                      <a href="tel:<%=elem.phone%>"><i class="fa-solid fa-square-phone"></i></a>
+                  </div>
+                </div>
+            </div>
+            <% })%>
+            
+        </div>
+          <div class="pagination">
+            <li class="page-item previous-page disable"><a class="page-link" href="#">Prev</a></li>
+            <li class="page-item current-page active"><a class="page-link" href="#">1</a></li>
+            <li class="page-item dots"><a class="page-link" href="#">...</a></li>
+            <li class="page-item current-page"><a class="page-link" href="#">5</a></li>
+            <li class="page-item current-page"><a class="page-link" href="#">6</a></li>
+            <li class="page-item dots"><a class="page-link" href="#">...</a></li>
+            <li class="page-item current-page"><a class="page-link" href="#">10</a></li>
+            <li class="page-item next-page"><a class="page-link" href="#">Next</a></li>
+          </div>
+        </div>
+      </div>
+
+      <div class="slider-cont-name2">
+        <span>Komentariya</span>
+        <p>Yangi Avlod O`quv Markazi haqida Komentariya</p>
+      </div>
+
+
+
+      <div class="testimon">
+        <div class="wrapper-test">
+            <div class="box-test">
+              <i class="fas fa-quote-left quote"></i>
+              <p>Lorem aliasry ipsum dolor sits ametans, consectetur adipisicing elitits. Expedita reiciendis itaque placeat thuratu, quasi yiuos repellendus repudiandae deleniti ideas fuga molestiae, alias.</p>
+              <div class="content">
+                <div class="info">
+                  <div class="name">Lionel Messi</div>
+                  <div class="job">Forward | Football Player</div>
+                  <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                  </div>
+                </div>
+                <div class="image">
+                  <img src="./../Images/Testimonial/1.jpg" alt="">
+                </div>
+              </div>
+            </div>
+            <div class="box-test">
+              <i class="fas fa-quote-left quote"></i>
+              <p>Lorem aliasry ipsum dolor sits ametans, consectetur adipisicing elitits. Expedita reiciendis itaque placeat thuratu, quasi yiuos repellendus repudiandae deleniti ideas fuga molestiae, alias.</p>
+              <div class="content">
+                <div class="info">
+                  <div class="name">Cristiano Ronaldu</div>
+                  <div class="job">Forward | Football Player</div>
+                  <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="far fa-star"></i>
+                  </div>
+                </div>
+                <div class="image">
+                  <img src="./../Images/Testimonial/2.jpg" alt="">
+                </div>
+              </div>
+            </div>
+            <div class="box-test">
+              <i class="fas fa-quote-left  quote"></i>
+              <p>Lorem aliasry ipsum dolor sits ametans, consectetur adipisicing elitits. Expedita reiciendis itaque placeat thuratu, quasi yiuos repellendus repudiandae deleniti ideas fuga molestiae, alias.</p>
+              <div class="content">
+                <div class="info">
+                  <div class="name">Neymar Junior</div>
+                  <div class="job">Forward | Football Player</div>
+                  <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="far fa-star"></i>
+                    <i class="far fa-star"></i>
+                    <i class="far fa-star"></i>
+                    <i class="far fa-star"></i>
+                  </div>
+                </div>
+                <div class="image">
+                  <img src="./../Images/Testimonial/3.jpg" alt="">
+                </div>
+              </div>
+            </div>
+            <div class="box-test">
+              <i class="fas fa-quote-left  quote"></i>
+              <p>Lorem aliasry ipsum dolor sits ametans, consectetur adipisicing elitits. Expedita reiciendis itaque placeat thuratu, quasi yiuos repellendus repudiandae deleniti ideas fuga molestiae, alias.</p>
+              <div class="content">
+                <div class="info">
+                  <div class="name">Cristiano Ronaldu</div>
+                  <div class="job">Forward | Football Player</div>
+                  <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="far fa-star"></i>
+                  </div>
+                </div>
+                <div class="image">
+                  <img src="./../Images/Testimonial/2.jpg" alt="">
+                </div>
+              </div>
+            </div>
+            <div class="box-test">
+              <i class="fas fa-quote-left  quote"></i>
+              <p>Lorem aliasry ipsum dolor sits ametans, consectetur adipisicing elitits. Expedita reiciendis itaque placeat thuratu, quasi yiuos repellendus repudiandae deleniti ideas fuga molestiae, alias.</p>
+              <div class="content">
+                <div class="info">
+                  <div class="name">Neymar Junior</div>
+                  <div class="job">Forward | Football Player</div>
+                  <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="far fa-star"></i>
+                    <i class="far fa-star"></i>
+                    <i class="far fa-star"></i>
+                    <i class="far fa-star"></i>
+                  </div>
+                </div>
+                <div class="image">
+                  <img src="./../Images/Testimonial/3.jpg" alt="">
+                </div>
+              </div>
+            </div>
+            <div class="box-test">
+                <i class="fas fa-quote-left  quote"></i>
+                <p>Lorem aliasry ipsum dolor sits ametans, consectetur adipisicing elitits. Expedita reiciendis itaque placeat thuratu, quasi yiuos repellendus repudiandae deleniti ideas fuga molestiae, alias.</p>
+                <div class="content">
+                  <div class="info">
+                    <div class="name">Lionel Messi</div>
+                    <div class="job">Forward | Football Player</div>
+                    <div class="stars">
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                    </div>
+                  </div>
+                  <div class="image">
+                    <img src="./../Images/Testimonial/1.jpg" alt="">
+                  </div>
+                </div>
+              </div>
+          </div>
+      </div>
+
+
+
+
+
+
+
+
+
+
+      <div class="map-cont">
+        <div class="information-map">
+            <span class="name-info">Aloqa</span>
+            <div class="info-logo-name">
+                <i class="fa-solid fa-square-phone"></i><p>Telefon Raqamlar</p>
+            </div>
+            <%data.phones.forEach(elem=>{%>
+                <div class="info-user">
+                    <i class="fa-solid fa-user"></i><p><%=elem%></p>
+                </div>
+            <%})%>
+            <div class="info-logo-name">
+                <i class="fa-solid fa-envelope"></i></i><p>Mail Pochta</p>
+            </div>
+            <%data.emails.forEach(elem=>{%>
+                <div class="info-user">
+                    <i class="fa-solid fa-at"></i><p><%=elem%></p>
+                </div>
+            <%})%>
+            <div class="info-logo-name">
+                <i class="fa-solid fa-user-tie"></i></i><p>Adminlar</p>
+            </div>
+            <%data.admins.forEach(elem=>{%>
+                <div class="info-user">
+                    <i class="fa-solid fa-user-large"></i><p><%=elem%></p>
+                </div>
+            <%})%>
+           
+        </div>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d38771.93704704348!2d66.20826887101823!3d40.01031892140917!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3f4df5364e1fcc31%3A0x39399e03023bb4b6!2z0J_QsNC50YjQsNC90LHQsCwg0KPQt9Cx0LXQutC40YHRgtCw0L0!5e1!3m2!1sru!2s!4v1649743699710!5m2!1sru!2s" class="map" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+       </div>
+        <!-- footer -->
+    
+        <footer class="footer">
+            <div class="footer-container">
+                <div class="row">
+                    <div class="footer-col">
+                        <h4>O'quv turlari</h4>
+                        <ul>
+                            <li><a href="#">Prezident Maktabi Tayyorlov</a></li>
+                            <li><a href="#">Yamato IT Academy</a></li>
+                            <li><a href="#">Xususiy Maktab</a></li>
+                            <li><a href="#">Pochemushka</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h4>Kurslar</h4>
+                        <ul>
+                            <li><a href="#">Mental Arifmetika</a></li>
+                            <li><a href="#">Yapon Tili</a></li>
+                            <li><a href="#">Matematika</a></li>
+                            <li><a href="#">Rus Tili</a></li>
+                            <li><a href="#">Inglis Tili</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h4>Bo'limlar</h4>
+                        <ul>
+                            <li><a href="#">O'qituvchilar</a></li>
+                            <li><a href="#">Yangiliklar</a></li>
+                            <li><a href="#">Kurslar</a></li>
+                            <li><a href="#">Yutuqlar</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h4>Biz bilan bog'lanish</h4>
+                        <div class="social-links">
+                            <a href="<%=data.bizBilanBoglanish.facebookLink%>"><i class="fab fa-facebook-f"></i></a>
+                            <a href="<%=data.bizBilanBoglanish.youtubeLink%>"><i class="fa-brands fa-youtube"></i></a>
+                            <a href="<%=data.bizBilanBoglanish.instagramLink%>"><i class="fab fa-instagram"></i></a>
+                            <a href="<%=data.bizBilanBoglanish.telegramLink%>"><i class="fa-brands fa-telegram"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+       </footer>
+
+
+    
+    <!-- JQuery cdn -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <!-- GSAP link -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.2/gsap.min.js" integrity="sha512-kVlGhj2qFy+KBCFuvjBJTGUMxbdqJKs4yK2jh0e0VPhWUPiPC87bzm4THmaaIee3Oj7j6sDpTTgm2EPPiESqBg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <!-- GSAP ScrollTrigger Link -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.2/ScrollTrigger.min.js" integrity="sha512-mwNAdRfAgTFw7sywUyp8aLsHQN5qHd6PIX2K8zIbJLjGw0DyKriCK3sSs9IphpRqsNRvyRlP3HtbFtJIUofHJQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <!-- Slick MIN JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js" integrity="sha512-XtmMtDEcNz2j7ekrtHvOVR4iwwaD6o/FUJe6+Zq+HgcCsk3kj4uSQQR8weQ2QVj1o0Pk6PwYLohm206ZzNfubg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <!-- AOS JS -->
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        AOS.init();
+    </script>
+    <!-- Script js -->
+    <script>
+        window.replainSettings = { id: '2540d53e-a068-4d7f-ba30-946bc2888ffa' };
+        (function(u){var s=document.createElement('script');s.async=true;s.src=u;
+        var x=document.getElementsByTagName('script')[0];x.parentNode.insertBefore(s,x);
+        })('https://widget.replain.cc/dist/client.js');
+        </script>
+    <script src="/teacher/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Admin Panel | Rename_2</title>
+    <style>*{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Poppins";
+        font-family: sans-serif;
+    }
+    h1{
+        font-size: 50px;
+        margin: 20px 0;
+        text-align: center;
+    }
+    textarea{
+        padding: 5px;
+    }
+    button{
+        width: 50%;
+        height: 50px;    
+        background-color: #1c4eac;
+        border: none;
+        transition: all .4s ease;
+    }
+    body .back{
+        background-color: red;
+    }
+    button a{
+        color: white;
+        font-size: 22px;
+        letter-spacing: 1px;
+        text-decoration: none;
+    }
+    button:active{
+        transform: scale(0.99);
+    }
+    button:hover{
+        cursor: pointer;
+        background-color: #0b2d6b;
+    }
+    input{
+        width: 300px;
+        height: 40px;
+        padding-left: 20px;
+        font-size: 20px;
+        margin: 20px 0;
+    }
+    .box{
+        padding-left: 90px;
+        width: 100%;
+        margin: 40px 0 ;
+        /* border: 1px solid red; */
+    }
+    p{
+        font-size: 40px;
+        color: white;
+        margin: 20px;
+        width: 100%;
+        height: 60px;
+        padding-left: 20px;
+        background-color: black;
+    }
+    .flex{
+        display: flex;
+    }
+    .leftBar{
+        width: 500px;
+    }
+    .rightBar{
+        margin-left: 100px;
+        width: 700px;
+    }
+    </style>
+</head>
+<body>
+    <h1>Admin Panel | Rename_6</h1>
+<div class="flex">
+    <div class="leftBar">
+        <%if(message){%>
+            <p class="alert"><%= message%></p>
+        <%}%>
+        <form action="/productionData/<%=adminID%>/rename_6" method="post">
+            <div class="box">
+                <p>1</p>
+                <img src="/image/rename_6/1.jpg" alt="rasm"><br>
+                <input type="text" name="phones" required>
+                <br>
+            </div>
+        
+        
+            <div class="box">
+                <p>2</p>
+                <img src="/image/rename_6/2.jpg" alt="rasm"><br>
+                <input type="text" name="emails" required>
+                <br>
+            </div>
+            <div class="box">
+                <p>3</p>
+                <img src="/image/rename_6/3.jpg"  alt="rasm"><br>
+                <input type="text" name="admins" required>
+                <br>
+                <button type="submit">
+                    O`zgartirish 📝
+                </button>
+            </div>
+        </form>
+        <!-- <form action="/productionData/<%=adminID%>/rename_6/clear" method="post"><button type="submit">CLEAR</button></form> -->
+        </div>
+        <div class="rightBar">
+            <ul>
+                <h3>Phones</h3>
+                <% data.phones.forEach(elem=>{ %>
+                    <li><%=elem%> <form action="/productionData/<%=adminID%>/rename_6/phone" method="post"> <input type="hidden" value="<%=elem%>" name="phone"> <input type="submit" value="Delete"></form></li>
+                <% }) %>
+                <hr>
+            </ul>
+
+            <ul>
+                <h3>Emails</h3>
+                <% data.emails.forEach(elem=>{ %>
+                    <li><%=elem%> <form action="/productionData/<%=adminID%>/rename_6/email" method="post"> <input type="hidden" value="<%=elem%>" name="phone"> <input type="submit" value="Delete"></form></li>
+                <% }) %>
+                <hr>
+            </ul>
+
+            <ul>
+                <h3>Admins</h3>
+                <% data.admins.forEach(elem=>{ %>
+                    <li><%=elem%> <form action="/productionData/<%=adminID%>/rename_6/admin" method="post"> <input type="hidden" value="<%=elem%>" name="phone"> <input type="submit" value="Delete"></form></li>
+                <% }) %>
+                <hr>
+            </ul>
+        </div>
+</div>
+    <button class="back">
+        <a href="/prodData/<%=adminID%>">Orqaga 🔙</a>
+    </button>
+</body>
+</html>

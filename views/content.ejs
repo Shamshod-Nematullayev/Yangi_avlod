@@ -1,0 +1,187 @@
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins";
+}
+h1{
+    font-size: 50px;
+    margin: 20px 0;
+    text-align: center;
+}
+.card{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: column;
+    width: 95%;
+    height: 600px;
+    margin: 40px auto;
+    border: 2px solid #353935;
+}
+.card img{
+    width: 800px;   
+}
+select{
+    margin: 25px 0;
+}
+.card p{
+    width: 80%;
+    font-size: 600;
+    text-align: center;
+}
+.card button{
+    width: 80%;
+    height: 50px;    
+    background-color: #1c4eac;
+    border: none;
+    transition: all .4s ease;
+}
+.card button a{
+    color: white;
+    font-size: 22px;
+    letter-spacing: 1px;
+    text-decoration: none;
+}
+.card button:active{
+    transform: scale(0.99);
+}
+.card button:hover{
+    cursor: pointer;
+    background-color: #0b2d6b;
+}
+    </style>
+    <title>Admin | Panel</title>
+</head>
+<body>
+    <h1>Admin Panel</h1>
+    <div class="homepageContent">
+        <div class="card">
+            <img src="/image/1.jpg" alt="Rasm">
+            <p class="description">
+                Salomlashish qismidagi yozuvlar va fonni o'zgartirish uchun bu yerga kiring    
+            </p>
+            <button>
+                <a href="/adminActions/<%=adminID%>/prodData/rename_1">O`zgartirish 📝</a>
+            </button>
+        </div>
+        <div class="card">
+            <img src="/image/2.jpg" alt="Rasm">
+            <p class="description">
+                Bosh sahifadagi sliderni boshqarish uchun bu yerga kiring    
+            </p>
+            <button>
+                <a href="/adminActions/<%=adminID%>/prodData/slider">O`zgartirish 📝</a>
+            </button>
+        </div>
+        <div class="card">
+            <img src="/image/3.jpg" alt="Rasm">
+            <p class="description">
+                Batafsil ma'lumot deb nomlangan qismga o'zgartirish kiritish uchun bu yerga kiring
+            </p>
+            <button>
+                <a href="/adminActions/<%=adminID%>/prodData/rename_3">O`zgartirish 📝</a>
+            </button>
+        </div>
+        <div class="card">
+            <img src="/image/5.jpg" alt="Rasm">
+            <p class="description">
+                Yangiliklar menyusini boshqarish va yangi ma'lumotlar yozish uchun bu yerga kiring
+            </p>
+            <button>
+                <a href="/createNews/<%=adminID%>">O`zgartirish 📝</a>
+            </button>
+        </div>
+        <div class="card">
+            <img src="/image/6.jpg" alt="Rasm">
+            <p class="description">
+                Pastki qismdagi ma'lumotlarni o'zgartirish uchun bu yerga kiring
+            </p>
+            <button>
+                <a href="/adminActions/<%=adminID%>/prodData/rename_6">O`zgartirish 📝</a>
+            </button>
+        </div>
+        <div class="card">
+            <img src="/image/7.jpg" alt="Rasm">
+            <p class="description">
+                Saytning pastki qismidagi Biz bilan bog'lanish bo'limidagi ikonkalarga link berish uchun bu yerga kiring 
+            </p>
+            <button>
+                <a href="/adminActions/<%=adminID%>/prodData/rename_7">O`zgartirish 📝</a>
+            </button>
+        </div>
+        <div class="card">
+            <iframe src="<%=hosting%>/teachers/" frameborder="0" id="teachersPage"></iframe>
+            <p class="description">
+                O'qituvchilar ma'lumoti joylangan sahifa kontentini o'zgartirish uchun bu yerga kiring
+            </p>
+            <button>
+                <a href="/teachers/<%=adminID%>">O`zgartirish 📝</a>
+            </button>
+        </div>
+        <div class="card">
+            <iframe src="<%=hosting%>/courses/" frameborder="0" id="coursesPage"></iframe>
+            <p class="description">
+                Kurslar ma'lumoti joylangan sahifa kontentini o'zgartirish uchun bu yerga kiring
+            </p>
+            <button>
+                <a href="/courses/<%=adminID%>">O`zgartirish 📝</a>
+            </button>
+        </div>
+    </div>
+    <!-- <button id="homePageContentBtn">Home Page Content</button><br>
+    <button id="teachersPageContentBtn">Teachers Page Content</button> -->
+    <div class="teachersPageContent">
+      
+    </div>
+    
+<style>
+    /* .homepageContent{
+        height: 0;
+        display: none;
+    }
+    .teachersPageContent{
+        display: none;
+    } */
+    .active{
+        display: block;
+    }
+    .none{
+        display: none;
+    }
+    .fixed{
+        position: fixed;
+    }
+    #teachersPage, #coursesPage{
+        width: 100vw;
+        height: 100vh;
+        transform: scale(.5);
+    }
+</style>
+<script>
+    document.querySelector('#homePageContentBtn').addEventListener('click', ()=>{
+        document.querySelector('.homepageContent').classList.toggle('active')
+        document.querySelector('#homePageContentBtn').classList.toggle('fixed')
+        document.querySelector('#teachersPageContentBtn').classList.toggle("none")
+    })
+    document.querySelector('#teachersPageContentBtn').addEventListener('click', ()=>{
+        document.querySelector(".teachersPageContent").classList.toggle("active")
+        document.querySelector('#teachersPageContentBtn').classList.toggle("fixed")
+        document.querySelector('#homePageContentBtn').classList.toggle('none')
+    })
+</script>
+</body>
+</html>

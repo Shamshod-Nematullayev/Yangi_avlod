@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Font poppins -->    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <!-- Font poppins -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Font poppins -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Slick Theme Min -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css" integrity="sha512-17EgCFERpgZKcm0j0fEq1YCJuyAWdz9KUtv1EjVuaOz8pDnh/0nZxmU6BBXwaaxqoi9PQXnRWqlcDB027hgv9A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Slick min css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css" integrity="sha512-yHknP1/AwR+yx26cB1y0cjvQUMvEa2PFzt1c9LlS4pRQ5NOTZFWbhBig+X9G9eYW/8m0/4OXNx8pxJ6z57x0dw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- AOS LINK -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <!-- Link Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- style css -->
+    <link rel="stylesheet" href="/course/style.css">
+    <!--==================== UNICONS ====================-->
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v3.0.6/css/line.css">
+    <!-- Title Site -->
+    <title>Yangi Avlod | Kurslar</title>
+</head>
+<body>
+    <a id="button">
+      <i class="fas fa-angle-up"></i>
+    </a>
+    <div id="preloader"><div id="loader"></div></div>
+    <div class="container">
+        <header id="header">
+            <%if(userId){%>
+                <span id="clock">12 : 12 : 12</span>
+                <%}else{%>
+                    <a href="/login" id="loginBtn">Kirish</a>
+            <%}
+            %>
+            <ul id="menu">
+                <li><a href="/">Bosh Sahifa</a></li>
+                <li><a href="/teachers">O'qituvchilar</a></li>
+                <li><a href="/news">Yangliklar</a></li>
+                <li><a href="/courses" class="active">Kurslar</a></li>
+                <li><a onclick="bizBilanBoglanish()" style="cursor: pointer;">Biz bilan bog'laning</a></li>
+                <script> 
+                    function bizBilanBoglanish(){
+                        window.scrollTo(0, document.body.scrollHeight - document.querySelector('footer').scrollHeight- document.querySelector(".map-cont").scrollHeight-90)
+                    }
+                </script>
+            </ul>
+            <p class="logo">Yangi Avlod</p>
+            <i class="fa-solid fa-bars" id="bars"></i>
+        </header>
+    </div>
+
+
+      <div class="slider-cont-name2">
+        <span>Kurslar</span>
+        <p>Yangi Avlod O`quv Markazidagi Kurslar</p>
+      </div>
+
+
+
+      <section class="card_s container_s grid">
+        <div class="card__container grid">
+            <!--==================== CARD 1 ====================-->
+            <%courseData.forEach(elem=>{ %>
+              <article class="card__content grid">
+                <div class="card__pricing">
+                    <div class="card__pricing-number">
+                        <span class="card__pricing-symbol"><%=elem.price%></span>
+                    </div>
+                    <span class="card__pricing-month"> /&nbsp;oyiga</span>
+                </div>
+
+                <header class="card__header">
+                    <div class="card__header-circle grid">
+                        <img src="../Images/kurs/enterprise-coin.png" alt="" class="card__header-img">
+                    </div>
+                    
+                    <span class="card__header-subtitle"><%=elem.demo%></span>
+                    <h1 class="card__header-title"><%=elem.title%></h1>
+                </header>
+                
+                <ul class="card__list grid">
+
+                  <%elem.skills.forEach(skill=>{%>
+                    <li class="card__list-item">
+                        <i class="uil uil-check card__list-icon"></i>
+                        <p class="card__list-description"><%=skill%> </p>
+                    </li>
+                  <%})%>                    
+                </ul>
+
+                <button class="card__button">Ro`yxatdan O'tish</button>
+            </article>
+           <% })%>
+            
+        </div>
+    </section>
+
+
+
+
+
+
+      <div class="slider-cont-name2">
+        <span>Komentariya</span>
+        <p>Yangi Avlod O`quv Markazi haqida Komentariya</p>
+      </div>
+
+
+
+      <div class="testimon">
+        <div class="wrapper-test">
+            <div class="box-test">
+              <i class="fas fa-quote-left quote"></i>
+              <p>Lorem aliasry ipsum dolor sits ametans, consectetur adipisicing elitits. Expedita reiciendis itaque placeat thuratu, quasi yiuos repellendus repudiandae deleniti ideas fuga molestiae, alias.</p>
+              <div class="content">
+                <div class="info">
+                  <div class="name">Lionel Messi</div>
+                  <div class="job">Forward | Football Player</div>
+                  <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                  </div>
+                </div>
+                <div class="image">
+                  <img src="./../Images/Testimonial/1.jpg" alt="">
+                </div>
+              </div>
+            </div>
+            <div class="box-test">
+              <i class="fas fa-quote-left quote"></i>
+              <p>Lorem aliasry ipsum dolor sits ametans, consectetur adipisicing elitits. Expedita reiciendis itaque placeat thuratu, quasi yiuos repellendus repudiandae deleniti ideas fuga molestiae, alias.</p>
+              <div class="content">
+                <div class="info">
+                  <div class="name">Cristiano Ronaldu</div>
+                  <div class="job">Forward | Football Player</div>
+                  <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="far fa-star"></i>
+                  </div>
+                </div>
+                <div class="image">
+                  <img src="./../Images/Testimonial/2.jpg" alt="">
+                </div>
+              </div>
+            </div>
+            <div class="box-test">
+              <i class="fas fa-quote-left  quote"></i>
+              <p>Lorem aliasry ipsum dolor sits ametans, consectetur adipisicing elitits. Expedita reiciendis itaque placeat thuratu, quasi yiuos repellendus repudiandae deleniti ideas fuga molestiae, alias.</p>
+              <div class="content">
+                <div class="info">
+                  <div class="name">Neymar Junior</div>
+                  <div class="job">Forward | Football Player</div>
+                  <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="far fa-star"></i>
+                    <i class="far fa-star"></i>
+                    <i class="far fa-star"></i>
+                    <i class="far fa-star"></i>
+                  </div>
+                </div>
+                <div class="image">
+                  <img src="./../Images/Testimonial/3.jpg" alt="">
+                </div>
+              </div>
+            </div>
+            <div class="box-test">
+              <i class="fas fa-quote-left  quote"></i>
+              <p>Lorem aliasry ipsum dolor sits ametans, consectetur adipisicing elitits. Expedita reiciendis itaque placeat thuratu, quasi yiuos repellendus repudiandae deleniti ideas fuga molestiae, alias.</p>
+              <div class="content">
+                <div class="info">
+                  <div class="name">Cristiano Ronaldu</div>
+                  <div class="job">Forward | Football Player</div>
+                  <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="far fa-star"></i>
+                  </div>
+                </div>
+                <div class="image">
+                  <img src="./../Images/Testimonial/2.jpg" alt="">
+                </div>
+              </div>
+            </div>
+            <div class="box-test">
+              <i class="fas fa-quote-left  quote"></i>
+              <p>Lorem aliasry ipsum dolor sits ametans, consectetur adipisicing elitits. Expedita reiciendis itaque placeat thuratu, quasi yiuos repellendus repudiandae deleniti ideas fuga molestiae, alias.</p>
+              <div class="content">
+                <div class="info">
+                  <div class="name">Neymar Junior</div>
+                  <div class="job">Forward | Football Player</div>
+                  <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="far fa-star"></i>
+                    <i class="far fa-star"></i>
+                    <i class="far fa-star"></i>
+                    <i class="far fa-star"></i>
+                  </div>
+                </div>
+                <div class="image">
+                  <img src="./../Images/Testimonial/3.jpg" alt="">
+                </div>
+              </div>
+            </div>
+            <div class="box-test">
+                <i class="fas fa-quote-left  quote"></i>
+                <p>Lorem aliasry ipsum dolor sits ametans, consectetur adipisicing elitits. Expedita reiciendis itaque placeat thuratu, quasi yiuos repellendus repudiandae deleniti ideas fuga molestiae, alias.</p>
+                <div class="content">
+                  <div class="info">
+                    <div class="name">Lionel Messi</div>
+                    <div class="job">Forward | Football Player</div>
+                    <div class="stars">
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                    </div>
+                  </div>
+                  <div class="image">
+                    <img src="./../Images/Testimonial/1.jpg" alt="">
+                  </div>
+                </div>
+              </div>
+          </div>
+      </div>
+
+
+
+
+
+
+
+
+
+
+      <div class="map-cont">
+        <div class="information-map">
+            <span class="name-info">Aloqa</span>
+            <div class="info-logo-name">
+                <i class="fa-solid fa-square-phone"></i><p>Telefon Raqamlar</p>
+            </div>
+            <%data.phones.forEach(elem=>{%>
+                <div class="info-user">
+                    <i class="fa-solid fa-user"></i><p><%=elem%></p>
+                </div>
+            <%})%>
+            <div class="info-logo-name">
+                <i class="fa-solid fa-envelope"></i></i><p>Mail Pochta</p>
+            </div>
+            <%data.emails.forEach(elem=>{%>
+                <div class="info-user">
+                    <i class="fa-solid fa-at"></i><p><%=elem%></p>
+                </div>
+            <%})%>
+            <div class="info-logo-name">
+                <i class="fa-solid fa-user-tie"></i></i><p>Adminlar</p>
+            </div>
+            <%data.admins.forEach(elem=>{%>
+                <div class="info-user">
+                    <i class="fa-solid fa-user-large"></i><p><%=elem%></p>
+                </div>
+            <%})%>
+           
+        </div>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d38771.93704704348!2d66.20826887101823!3d40.01031892140917!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3f4df5364e1fcc31%3A0x39399e03023bb4b6!2z0J_QsNC50YjQsNC90LHQsCwg0KPQt9Cx0LXQutC40YHRgtCw0L0!5e1!3m2!1sru!2s!4v1649743699710!5m2!1sru!2s" class="map" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+       </div>
+        <!-- footer -->
+    
+        <footer class="footer">
+            <div class="footer-container">
+                <div class="row">
+                    <div class="footer-col">
+                        <h4>O'quv turlari</h4>
+                        <ul>
+                            <li><a href="#">Prezident Maktabi Tayyorlov</a></li>
+                            <li><a href="#">Yamato IT Academy</a></li>
+                            <li><a href="#">Xususiy Maktab</a></li>
+                            <li><a href="#">Pochemushka</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h4>Kurslar</h4>
+                        <ul>
+                            <li><a href="#">Mental Arifmetika</a></li>
+                            <li><a href="#">Yapon Tili</a></li>
+                            <li><a href="#">Matematika</a></li>
+                            <li><a href="#">Rus Tili</a></li>
+                            <li><a href="#">Inglis Tili</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h4>Bo'limlar</h4>
+                        <ul>
+                            <li><a href="#">O'qituvchilar</a></li>
+                            <li><a href="#">Yangiliklar</a></li>
+                            <li><a href="#">Kurslar</a></li>
+                            <li><a href="#">Yutuqlar</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h4>Biz bilan bog'lanish</h4>
+                        <div class="social-links">
+                            <a href="<%=data.bizBilanBoglanish.facebookLink%>"><i class="fab fa-facebook-f"></i></a>
+                            <a href="<%=data.bizBilanBoglanish.youtubeLink%>"><i class="fa-brands fa-youtube"></i></a>
+                            <a href="<%=data.bizBilanBoglanish.instagramLink%>"><i class="fab fa-instagram"></i></a>
+                            <a href="<%=data.bizBilanBoglanish.telegramLink%>"><i class="fa-brands fa-telegram"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+       </footer>
+
+    <!-- footer -->
+
+
+
+    
+    <!-- JQuery cdn -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <!-- GSAP link -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.2/gsap.min.js" integrity="sha512-kVlGhj2qFy+KBCFuvjBJTGUMxbdqJKs4yK2jh0e0VPhWUPiPC87bzm4THmaaIee3Oj7j6sDpTTgm2EPPiESqBg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <!-- GSAP ScrollTrigger Link -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.2/ScrollTrigger.min.js" integrity="sha512-mwNAdRfAgTFw7sywUyp8aLsHQN5qHd6PIX2K8zIbJLjGw0DyKriCK3sSs9IphpRqsNRvyRlP3HtbFtJIUofHJQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <!-- Slick MIN JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js" integrity="sha512-XtmMtDEcNz2j7ekrtHvOVR4iwwaD6o/FUJe6+Zq+HgcCsk3kj4uSQQR8weQ2QVj1o0Pk6PwYLohm206ZzNfubg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <!-- AOS JS -->
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        AOS.init();
+    </script>
+    <!-- Script js -->
+    <script>
+        window.replainSettings = { id: '2540d53e-a068-4d7f-ba30-946bc2888ffa' };
+        (function(u){var s=document.createElement('script');s.async=true;s.src=u;
+        var x=document.getElementsByTagName('script')[0];x.parentNode.insertBefore(s,x);
+        })('https://widget.replain.cc/dist/client.js');
+        </script>
+    <script>
+        // Preloader js
+let loader = document.getElementById('preloader');
+window.addEventListener('load' , function (){
+  loader.style.display = 'none';
+})
+// Preloader js
+
+
+
+
+// Navbar Scroll action
+
+window.addEventListener('scroll' , function(){
+    var header = document.querySelector('header');
+    header.classList.toggle('sticky',window.scrollY > 0);
+
+});
+
+// Navbar Scroll action
+
+
+
+
+// Time navbar
+
+setInterval(displayTime,100)
+
+function displayTime(){
+  const timeNow = new Date();
+  
+  let hours = timeNow.getHours();
+  let minutes = timeNow.getMinutes();
+  let seconds = timeNow.getSeconds();
+  
+  hours = hours < 10 ? '0' + hours : hours;
+  minutes = minutes < 10 ? '0' + minutes : minutes;
+  seconds = seconds < 10 ? '0' + seconds : seconds;
+  
+  let timeStr = hours + " : " + minutes + " : " + seconds;
+  
+  try {
+    document.getElementById('clock').innerText = timeStr;
+  } catch (error) {
+    
+  }
+}
+
+displayTime();
+
+
+// Time navbar
+
+
+
+
+
+gsap.registerPlugin(ScrollTrigger);
+
+
+gsap.to(".namemain1" , {
+  x: 300 , 
+  duration: 3 , 
+  ease : "none",
+  scrollTrigger: {
+    trigger: '.namemain1',
+    start: " 160px center" ,
+    end: "+=300",
+    scrub : true,
+    // markers : true,
+    toggleActions: "restart pause reverse pause"
+  }
+})
+gsap.to(".namemain2" , {
+  x: 300 , 
+  duration: 3 , 
+  ease : "none",
+  scrollTrigger: {
+    trigger: '.namemain2',
+    start: " 250px center" ,
+    end: "+=300",
+    scrub : true,
+    // markers : true,
+    toggleActions: "restart pause reverse pause"
+  }
+})
+gsap.to(".namemain3" , {
+  x: 500 , 
+  duration: 3 , 
+  ease : "none",
+  scrollTrigger: {
+    trigger: '.namemain3',
+    start: " 360px center" ,
+    end: "+=300",
+    scrub : true,
+    // markers : true,
+    toggleActions: "restart pause reverse pause"
+  }
+})
+
+
+
+
+
+
+
+
+
+
+
+
+function getPageList(totalPages, page, maxLength){
+  function range(start, end){
+    return Array.from(Array(end - start + 1), (_, i) => i + start);
+  }
+
+  var sideWidth = maxLength < 9 ? 1 : 2;
+  var leftWidth = (maxLength - sideWidth * 2 - 3) >> 1;
+  var rightWidth = (maxLength - sideWidth * 2 - 3) >> 1;
+
+  if(totalPages <= maxLength){
+    return range(1, totalPages);
+  }
+
+  if(page <= maxLength - sideWidth - 1 - rightWidth){
+    return range(1, maxLength - sideWidth - 1).concat(0, range(totalPages - sideWidth + 1, totalPages));
+  }
+
+  if(page >= totalPages - sideWidth - 1 - rightWidth){
+    return range(1, sideWidth).concat(0, range(totalPages- sideWidth - 1 - rightWidth - leftWidth, totalPages));
+  }
+
+  return range(1, sideWidth).concat(0, range(page - leftWidth, page + rightWidth), 0, range(totalPages - sideWidth + 1, totalPages));
+}
+
+$(function(){
+  var numberOfItems = $(".card-content .card").length;
+  var limitPerPage = 15; //How many card items visible per a page
+  var totalPages = Math.ceil(numberOfItems / limitPerPage);
+  var paginationSize = 8; //How many page elements visible in the pagination
+  var currentPage;
+
+  function showPage(whichPage){
+    if(whichPage < 1 || whichPage > totalPages) return false;
+
+    currentPage = whichPage;
+
+    $(".card-content .card").hide().slice((currentPage - 1) * limitPerPage, currentPage * limitPerPage).show();
+
+    $(".pagination li").slice(1, -1).remove();
+
+    getPageList(totalPages, currentPage, paginationSize).forEach(item => {
+      $("<li>").addClass("page-item").addClass(item ? "current-page" : "dots")
+      .toggleClass("active", item === currentPage).append($("<a>").addClass("page-link")
+      .attr({href: "javascript:void(0)"}).text(item || "...")).insertBefore(".next-page");
+    });
+
+    $(".previous-page").toggleClass("disable", currentPage === 1);
+    $(".next-page").toggleClass("disable", currentPage === totalPages);
+    return true;
+  }
+
+  $(".pagination").append(
+    $("<li>").addClass("page-item").addClass("previous-page").append($("<a>").addClass("page-link").attr({href: "javascript:void(0)"}).text("Prev")),
+    $("<li>").addClass("page-item").addClass("next-page").append($("<a>").addClass("page-link").attr({href: "javascript:void(0)"}).text("Next"))
+  );
+
+  $(".card-content").show();
+  showPage(1);
+
+  $(document).on("click", ".pagination li.current-page:not(.active)", function(){
+    return showPage(+$(this).text());
+  });
+
+  $(".next-page").on("click", function(){
+    return showPage(currentPage + 1);
+  });
+
+  $(".previous-page").on("click", function(){
+    return showPage(currentPage - 1);
+  });
+});
+
+
+
+
+
+
+
+
+
+
+let like = document.querySelectorAll('.like');
+let icon_num = document.querySelectorAll('.icon-num');
+let p = 0
+let count = 0
+like.forEach((likefont) => {
+  likefont.addEventListener("click" , (e)=>{
+    likefont.querySelector('i').classList.toggle("actives"); 
+    if(likefont.querySelector('a').innerHTML == '0'){
+      likefont.querySelector('a').innerHTML= '1'
+      count = 1
+    }else{
+      likefont.querySelector('a').innerHTML= '0'
+      count = 0
+    }
+
+    })
+})
+
+
+
+var btn = $('#button');
+
+$(window).scroll(function() {
+  if ($(window).scrollTop() > 300) {
+    btn.addClass('show');
+  } else {
+    btn.removeClass('show');
+  }
+});
+
+btn.on('click', function(e) {
+  e.preventDefault();
+  $('html, body').animate({scrollTop:0}, '300');
+});
+    
+    </script>
+</body>
+</html>

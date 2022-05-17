@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            display: flex;
+        }
+        .news{
+            border: 1px solid #000;
+        }
+        .news img {
+            height: 300px;
+            width: 300px;
+        }
+        .none{
+            display: none;
+        }
+        .rightBar{
+            width: 700px;
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="leftBar">
+        <h2>Create a new</h2>
+    <form action="" method="post" enctype="multipart/form-data">
+        <label for="image">Ehtiyot bo'ling. Bu yerga .png yoki .jpg kengaytmali faylni yuklang. Aksholda saytda bug kelib chiqishi turgan gap<input type="file" placeholder="enter new image" name="image"></label><br>
+        <textarea type="text" name="title" id="" required></textarea><br>
+        <textarea type="text" name="desc" required></textarea><br>
+        <input type="text" name="link" placeholder="To'liq ma'lumot joylangan manzil">
+        <input type="submit" value="Change">
+    </form>
+    </div>
+    <div class="rightBar">
+        <%if(news){ news.forEach(elem=>{%>
+        <div class="news">
+            <img src="../img/news/<%=elem.image%>">
+            <h1><%=elem.title%></h1>
+            <p><%=elem.desc%> <form action="/createNews/<%=adminID%>/delete/<%=elem._id%>" method="post" ><input type="submit" value="delete"></form>
+                <form action="/createNews/<%=adminID%>/update/<%=elem._id%>" method="post" class="none" id="<%=elem._id%>">
+                   
+                    <textarea type="text" name="title" id="title" value=""><%=elem.title%></textarea><br>
+                    <textarea type="text" name="desc" id="desc" value=""><%=elem.desc%></textarea><br>
+                    <input type="text" name="link" id="">
+                    <input type="submit" value="change">
+
+
+                </form>
+                <button class="edit">Edit</button>
+                <script>
+                    document.querySelectorAll('.news').forEach(elem=>{
+                        elem.addEventListener('click', e=>{
+                            e.target.className =='edit'
+                            elem.querySelector('.none').classList.toggle('none')
+                        })
+                    })
+                </script>
+            </p>
+        </div>
+        <%})}%>
+    </div>
+    <a href="/prodData/<%=adminID%>">Orqaga 🔙</a>
+    <script>
+        document.querySelector(".delete").restintag(optionsObj, function(data) {
+        console.log(data);
+    },
+    function(error) {
+        console.log(error); 
+    });
+    </script>
+</body>
+</html>
