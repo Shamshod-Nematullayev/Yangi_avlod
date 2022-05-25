@@ -11,7 +11,7 @@ const client = new MongoClient(process.env.MONGO_DB, { useNewUrlParser: true, us
 //         console.log('MongoDB connection error...', err);
 //     })
 
-client.connect(err => {
+const db = client.connect(err => {
   const collection = client.db("test").collection("devices");
   // perform actions on the collection object
   client.close();
